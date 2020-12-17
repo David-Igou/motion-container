@@ -57,6 +57,6 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/armhf
-          tags: hub.docker.com/igou/motion:latest
+          tags: igou/motion:latest
           push: true
 
