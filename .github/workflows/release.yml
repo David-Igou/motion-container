@@ -1,6 +1,10 @@
-name: push_latest
+name: release
 
-on: [push]
+on:
+  schedule:
+    - cron: 0 0 1 * *
+  push: 
+
 
 jobs:
 
