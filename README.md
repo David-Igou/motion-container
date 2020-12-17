@@ -31,3 +31,6 @@ see `kubernetes/` directory for manifests
 
 To overwrite the default `motion.conf` you can create a configmap and mount it using `kubectl create configmap motion --from-file=motion.conf`
 
+## Raspberry Pi
+
+This has been tested on Raspbian and Ubuntu 20 LTS. If you are having issues, it is unlikely it comes from this container, and is probably interfacing with your boards camera.
