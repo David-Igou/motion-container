@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: motion
+  labels:
+    app: motion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: motion
+  template:
+    metadata:
+      labels:
+        app: motion
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 0
+        runAsGroup: 0
+        supplementalGroups:
+        -  44
+      containers:
+      - env:
+        image: quay.io/igou/motion:latest
+        imagePullPolicy: Always
+        name: motion
+        ports:
+        - containerPort: 8081
+        securityContext:
+          privileged: true
+        livenessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /
+            port: 8081
+          initialDelaySeconds: 30
+          timeoutSeconds: 30
+        volumeMounts:
+        - mountPath: /dev/video0
+          name: video0
+          subPath: video0
+#        - mountPath: /etc/motion/motion.conf
+#          name: motion
+#          readOnly: true
+#          subPath: motion.conf
+      volumes:
+      - name: video0
+        hostPath:
+          path: /dev
+#      - name: motion
+#        configMap:
+#          defaultMode: 420
+#          name: motion

@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: motion
+  name: motion
+spec:
+  rules:
+  - host: motion.mydomain.com
+    http:
+      paths:
+      - backend:
+          serviceName: motion
+          servicePort: 8081
