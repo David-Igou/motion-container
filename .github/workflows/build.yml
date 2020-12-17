@@ -35,5 +35,5 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/armhf
-          tags: quay.io/igou/motion:latest
+          tags: quay.io/igou/motion:4.3.2-r0
 

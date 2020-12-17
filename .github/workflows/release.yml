@@ -48,7 +48,7 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/armhf
-          tags: quay.io/igou/motion:latest
+          tags: quay.io/igou/motion:4.3.2-r0
           push: true
 
       - name: Build and push to Dockerhub
@@ -57,6 +57,6 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/armhf
-          tags: igou/motion:latest
+          tags: igou/motion:4.3.2-r0
           push: true
 
