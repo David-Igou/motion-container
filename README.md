@@ -2,7 +2,7 @@
 
 # motion-container
 
-This repository contains Dockerfiles to run [motion](https://motion-project.github.io/) inside an Alpine container. The goal is to provide access to small containers for each release, since the official installation instructions yield 500mb+ containers. This also uses
+This repository contains Dockerfiles to run [motion](https://motion-project.github.io/) inside an Alpine container. The goal is to provide access to small containers for each release, since the official installation instructions yield 500mb+ containers.
 
 # Deploy
 
