@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: motion
   name: motion
-  labels:
-    app: motion
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: motion
+      name: motion
   template:
     metadata:
       labels:
-        app: motion
+        name: motion
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: worker-1
       securityContext:
         fsGroup: 1000
         runAsUser: 0
@@ -40,15 +41,21 @@ spec:
         - mountPath: /dev/video0
           name: video0
           subPath: video0
-#        - mountPath: /etc/motion/motion.conf
-#          name: motion
-#          readOnly: true
-#          subPath: motion.conf
+        - mountPath: /etc/motion/motion.conf
+          name: motion
+          readOnly: true
+          subPath: motion.conf
       volumes:
       - name: video0
         hostPath:
           path: /dev
-#      - name: motion
-#        configMap:
-#          defaultMode: 420
-#          name: motion
+      - name: motion
+        configMap:
+          defaultMode: 420
+          name: motion
+      tolerations:
+      - effect: NoSchedule
+        key: camera
+        operator: Equal
+        value: "true"
+
